@@ -13,6 +13,6 @@ RUN comfy-node-install \
 WORKDIR /comfyui/custom_nodes
 RUN git clone https://github.com/ltdrdata/ComfyUI-Impact-Pack.git && \
     cd ComfyUI-Impact-Pack && \
-    pip install -r requirements.txt && \
+    uv pip install -r requirements.txt && \
     python install.py
 WORKDIR /
