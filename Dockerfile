@@ -17,4 +17,9 @@ RUN git clone https://github.com/kijai/ComfyUI-segment-anything-2.git && \
     cd ComfyUI-segment-anything-2 && \
     uv pip install -r requirements.txt || true
 
+# Art Venture (LoadImageFromUrl, JSON utils, etc.)
+RUN git clone https://github.com/sipherxyz/comfyui-art-venture.git && \
+    cd comfyui-art-venture && \
+    uv pip install -r requirements.txt || true
+
 WORKDIR /
