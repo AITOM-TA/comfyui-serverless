@@ -1,12 +1,20 @@
 FROM runpod/worker-comfyui:5.1.0-base
 
-# Installer TOUS les custom nodes via le registry (y compris Impact Pack)
-RUN comfy-node-install \
-    comfyui-impact-pack \
-    comfyui-florence2 \
-    comfyui-segment-anything-2 \
+WORKDIR /comfyui/custom_nodes
 
-# Mettre à jour Impact Pack vers la dernière version GitHub
-WORKDIR /comfyui/custom_nodes/ComfyUI-Impact-Pack
-RUN git pull origin main || true
+# Impact Pack (version compatible)
+RUN git clone https://github.com/ltdrdata/ComfyUI-Impact-Pack.git && \
+    cd ComfyUI-Impact-Pack && \
+    uv pip install -r requirements.txt
+
+# Florence2
+RUN git clone https://github.com/kijai/ComfyUI-Florence2.git && \
+    cd ComfyUI-Florence2 && \
+    uv pip install -r requirements.txt || true
+
+# SAM2 (Segment Anything 2)
+RUN git clone https://github.com/kijai/ComfyUI-segment-anything-2.git && \
+    cd ComfyUI-segment-anything-2 && \
+    uv pip install -r requirements.txt || true
+
 WORKDIR /
