@@ -5,10 +5,6 @@ RUN comfy-node-install \
     comfyui-impact-pack \
     comfyui-florence2 \
     comfyui-segment-anything-2 \
-    comfyui-kjnodes \
-    rgthree-comfy \
-    comfyui_essentials \
-    masquerade-nodes-comfyui
 
 # Mettre à jour Impact Pack vers la dernière version GitHub
 WORKDIR /comfyui/custom_nodes/ComfyUI-Impact-Pack
